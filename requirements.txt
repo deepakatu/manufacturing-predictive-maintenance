@@ -1,0 +1,60 @@
+
+# Core dependencies
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
+
+# Machine Learning
+tensorflow>=2.8.0
+keras>=2.8.0
+xgboost>=1.5.0
+lightgbm>=3.3.0
+
+# Time series analysis
+statsmodels>=0.13.0
+prophet>=1.0.0
+tslearn>=0.5.0
+
+# Anomaly detection
+pyod>=0.9.0
+isolation-forest>=0.1.0
+
+# Data visualization
+plotly>=5.0.0
+dash>=2.0.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# IoT and messaging
+paho-mqtt>=1.5.0
+requests>=2.25.0
+flask>=2.0.0
+fastapi>=0.70.0
+uvicorn>=0.15.0
+
+# Database
+sqlalchemy>=1.4.0
+sqlite3
+
+# Data processing
+pyyaml>=5.4.0
+joblib>=1.1.0
+
+# Monitoring and logging
+prometheus-client>=0.12.0
+logging
+
+# Testing
+pytest>=6.2.0
+pytest-cov>=2.12.0
+pytest-mock>=3.6.0
+
+# Development
+black>=21.0.0
+flake8>=3.9.0
+mypy>=0.910
+
+# Utilities
+python-dotenv>=0.19.0
+schedule>=1.1.0

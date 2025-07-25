@@ -1,0 +1,91 @@
+
+# Manufacturing Predictive Maintenance Configuration
+
+sensors:
+  vibration:
+    normal_range: [0.5, 3.0]
+    warning_threshold: 4.0
+    critical_threshold: 6.0
+    sampling_rate: 1000  # Hz
+    units: "mm/s"
+  
+  temperature:
+    normal_range: [60, 85]
+    warning_threshold: 90
+    critical_threshold: 100
+    units: "°C"
+  
+  pressure:
+    normal_range: [100, 200]
+    warning_threshold: 220
+    critical_threshold: 250
+    units: "PSI"
+  
+  current:
+    normal_range: [8, 15]
+    warning_threshold: 18
+    critical_threshold: 22
+    units: "A"
+
+equipment:
+  types:
+    - pump
+    - motor
+    - compressor
+    - conveyor
+  
+  failure_modes:
+    - bearing_wear
+    - misalignment
+    - imbalance
+    - overheating
+    - cavitation
+
+models:
+  anomaly_detection:
+    isolation_forest:
+      contamination: 0.1
+      n_estimators: 100
+      random_state: 42
+    
+    statistical:
+      control_limit_sigma: 3
+      window_size: 100
+  
+  predictive:
+    health_scoring:
+      model_type: "random_forest"
+      n_estimators: 200
+      max_depth: 10
+    
+    rul_estimation:
+      model_type: "lstm"
+      sequence_length: 50
+      hidden_units: 64
+
+dashboard:
+  title: "Predictive Maintenance Dashboard"
+  refresh_interval: 5  # seconds
+  max_data_points: 1000
+  alert_retention_days: 30
+
+alerts:
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+  
+  thresholds:
+    health_score_warning: 0.7
+    health_score_critical: 0.5
+    anomaly_score_threshold: 0.8
+
+data:
+  storage:
+    type: "sqlite"
+    connection_string: "sqlite:///data/maintenance.db"
+  
+  retention:
+    raw_data_days: 90
+    processed_data_days: 365
+    model_data_days: 1095

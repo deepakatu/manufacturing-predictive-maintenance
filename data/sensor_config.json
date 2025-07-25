@@ -1,0 +1,163 @@
+
+{
+  "equipment": [
+    {
+      "id": "PUMP_001",
+      "type": "centrifugal_pump",
+      "location": "Production Line A",
+      "sensors": {
+        "vibration_x": {
+          "type": "accelerometer",
+          "range": [0, 10],
+          "units": "mm/s",
+          "sampling_rate": 1000
+        },
+        "vibration_y": {
+          "type": "accelerometer", 
+          "range": [0, 10],
+          "units": "mm/s",
+          "sampling_rate": 1000
+        },
+        "temperature": {
+          "type": "thermocouple",
+          "range": [0, 150],
+          "units": "°C",
+          "sampling_rate": 1
+        },
+        "pressure": {
+          "type": "pressure_transducer",
+          "range": [0, 300],
+          "units": "PSI",
+          "sampling_rate": 10
+        },
+        "current": {
+          "type": "current_transformer",
+          "range": [0, 30],
+          "units": "A",
+          "sampling_rate": 10
+        }
+      },
+      "operating_parameters": {
+        "rated_speed": 1750,
+        "rated_power": 15,
+        "rated_flow": 500
+      }
+    },
+    {
+      "id": "MOTOR_002",
+      "type": "induction_motor",
+      "location": "Production Line B",
+      "sensors": {
+        "vibration_x": {
+          "type": "accelerometer",
+          "range": [0, 8],
+          "units": "mm/s",
+          "sampling_rate": 1000
+        },
+        "vibration_y": {
+          "type": "accelerometer",
+          "range": [0, 8], 
+          "units": "mm/s",
+          "sampling_rate": 1000
+        },
+        "temperature": {
+          "type": "RTD",
+          "range": [0, 120],
+          "units": "°C",
+          "sampling_rate": 1
+        },
+        "current": {
+          "type": "current_transformer",
+          "range": [0, 25],
+          "units": "A",
+          "sampling_rate": 10
+        }
+      },
+      "operating_parameters": {
+        "rated_speed": 1800,
+        "rated_power": 10,
+        "rated_voltage": 480
+      }
+    },
+    {
+      "id": "COMPRESSOR_003",
+      "type": "rotary_compressor",
+      "location": "Utility Room",
+      "sensors": {
+        "vibration_x": {
+          "type": "accelerometer",
+          "range": [0, 12],
+          "units": "mm/s",
+          "sampling_rate": 1000
+        },
+        "vibration_y": {
+          "type": "accelerometer",
+          "range": [0, 12],
+          "units": "mm/s", 
+          "sampling_rate": 1000
+        },
+        "temperature": {
+          "type": "thermocouple",
+          "range": [0, 200],
+          "units": "°C",
+          "sampling_rate": 1
+        },
+        "pressure_inlet": {
+          "type": "pressure_transducer",
+          "range": [0, 50],
+          "units": "PSI",
+          "sampling_rate": 10
+        },
+        "pressure_outlet": {
+          "type": "pressure_transducer",
+          "range": [0, 150],
+          "units": "PSI",
+          "sampling_rate": 10
+        },
+        "current": {
+          "type": "current_transformer",
+          "range": [0, 40],
+          "units": "A",
+          "sampling_rate": 10
+        }
+      },
+      "operating_parameters": {
+        "rated_speed": 3600,
+        "rated_power": 25,
+        "compression_ratio": 3.0
+      }
+    }
+  ],
+  "failure_modes": {
+    "bearing_wear": {
+      "affected_sensors": ["vibration_x", "vibration_y", "temperature"],
+      "progression_rate": "slow",
+      "warning_indicators": {
+        "vibration_increase": 1.5,
+        "temperature_increase": 10
+      }
+    },
+    "misalignment": {
+      "affected_sensors": ["vibration_x", "vibration_y"],
+      "progression_rate": "medium",
+      "warning_indicators": {
+        "vibration_increase": 2.0
+      }
+    },
+    "imbalance": {
+      "affected_sensors": ["vibration_x", "vibration_y"],
+      "progression_rate": "fast",
+      "warning_indicators": {
+        "vibration_increase": 2.5
+      }
+    },
+    "overheating": {
+      "affected_sensors": ["temperature", "current"],
+      "progression_rate": "fast",
+      "warning_indicators": {
+        "temperature_increase": 20,
+        "current_increase": 1.2
+      }
+    }
+  }
+}
